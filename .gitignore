@@ -1,0 +1,16 @@
+UnityProject/Library
+UnityProject/UnityVS
+UnityProject/Temp
+UnityProject/Main-csharp.sln.ide
+UnityProject/UnityVS.Main.sln.ide
+UnityProject/Assets/NGUI/Examples
+UnityProject/Assets/NGUI/Examples.meta
+UnityProject/Assets/UnityVS
+UnityProject/Assets/UnityVS.meta
+UnityProject/obj
+
+*.csproj
+*.unityproj
+*.sln
+*.suo
+*.userprefs
