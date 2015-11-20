@@ -31,6 +31,6 @@ Libs:
 ExcelDataReader:
 source:https://github.com/ExcelDataReader/ExcelDataReader
 release date:2014.7
-files:Libs/ICSharpCode.SharpZipLib.dll,Libs/Excel.dll,Libs/System.Data.dll
+files:ICSharpCode.SharpZipLib.dll,Excel.dll
 
 
