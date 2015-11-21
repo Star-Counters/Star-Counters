@@ -14,7 +14,8 @@ public class GameMainLoop : MonoBehaviour {
 		GameDataManager.Instance = new GameDataManager ();
         GameConfigManager.Instance = new GameConfigManager();
 		UIManager.Instance.ShowPanel<LoginPanel> ();
-	}
+        GameConfigManager.Instance.ChangeWordByLanguage(GameDataManager.Instance.IsChinese);
+    }
 	void OnApplicationPause(bool pause){
 	
 	}

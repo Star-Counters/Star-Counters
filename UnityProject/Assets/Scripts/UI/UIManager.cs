@@ -125,4 +125,12 @@ public class UIManager{
 		messageBoxPanel.SetMessageAndType (message, MessageBoxType.OK);
 		return messageBoxPanel;
 	}
+    public void RefreshAllPanels() {
+        foreach (Transform child in panelParent) {
+            UIPanel panel = child.GetComponent<UIPanel>();
+            if (panel) {
+                panel.Invalidate(true);
+            }
+        }
+    }
 }

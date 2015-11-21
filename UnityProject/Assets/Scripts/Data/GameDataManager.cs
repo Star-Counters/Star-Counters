@@ -81,4 +81,9 @@ public class GameDataManager
 			return t;
 		}
 	}
+    public bool IsChinese {
+        get {
+            return Get<OptionData>().language == SystemLanguage.ChineseSimplified;
+        }
+    }
 }

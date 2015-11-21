@@ -48,7 +48,8 @@ public class UILabel : UIWidget
 	[MultilineAttribute(6)]
 #endif
 	[HideInInspector][SerializeField] string mText = "";
-	[HideInInspector][SerializeField] int mFontSize = 16;
+    [HideInInspector][SerializeField] int mWordID = 0;//MelodySo add 2015.11.21
+    [HideInInspector][SerializeField] int mFontSize = 16;
 	[HideInInspector][SerializeField] FontStyle mFontStyle = FontStyle.Normal;
 	[HideInInspector][SerializeField] Alignment mAlignment = Alignment.Automatic;
 	[HideInInspector][SerializeField] bool mEncoding = true;
@@ -1141,9 +1142,21 @@ public class UILabel : UIWidget
 	protected override void OnStart ()
 	{
 		base.OnStart();
-
-		// Legacy support
-		if (mLineWidth > 0f)
+        //MelodySo Add Begin 2015.11.21
+#if UNITY_EDITOR
+        if (Application.isPlaying)
+        {
+            //TODO:if the mWordID ==0,do something.
+            if(mWordID>0)
+                text = GameConfigManager.Instance.GetWordByID(mWordID);
+        }
+#else
+            if(mWordID>0)
+                text = GameConfigManager.Instance.GetWordByID(mWordID);
+#endif
+        //MelodySo Add End 2015.11.21
+        // Legacy support
+        if (mLineWidth > 0f)
 		{
 			mMaxLineWidth = Mathf.RoundToInt(mLineWidth);
 			mLineWidth = 0f;

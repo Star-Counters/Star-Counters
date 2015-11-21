@@ -25,6 +25,9 @@ public class OptionsPanel : BasePanel {
 		transform.FindChild ("Music").GetComponent<UISprite> ().spriteName = data.isMusicOn ? "Buttons_Sound" : "Buttons_Mute";
 	}
 	void OnChooseLanguage(){
-		//data.language=
-	}
+        //TODO:Carrion
+        bool isCN = data.language == SystemLanguage.Chinese;
+        GameConfigManager.Instance.ChangeWordByLanguage(isCN);
+        UIManager.Instance.RefreshAllPanels();
+    }
 }

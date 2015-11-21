@@ -11,18 +11,20 @@ public class GameConfigManager
         set;
     }
     private Dictionary<Type, Dictionary<int,BaseConfig>> configsDictionary;
+    private Dictionary<int, string> wordDictionary;
     public GameConfigManager(){
         configsDictionary = new Dictionary<Type, Dictionary<int, BaseConfig>>();
+        wordDictionary = new Dictionary<int, string>();
         LoadAllConfigs();
     }
     public void LoadAllConfigs() {
         configsDictionary.Add(typeof(NPCConfig), LoadConfigFromText<NPCConfig>());
         configsDictionary.Add(typeof(DialogConfig), LoadConfigFromText<DialogConfig>());
-        configsDictionary.Add(typeof(ChineseWordConfig), LoadConfigFromText<ChineseWordConfig>());
-        configsDictionary.Add(typeof(EnglishWordConfig), LoadConfigFromText<EnglishWordConfig>());
+        //configsDictionary.Add(typeof(ChineseWordConfig), LoadConfigFromText<ChineseWordConfig>());
+        //configsDictionary.Add(typeof(EnglishWordConfig), LoadConfigFromText<EnglishWordConfig>());
     }
     /// <summary>
-    /// 加载.txt文件，生成类T的实例数组T[]。
+    /// 加载.txt文件，生成类T的实例字典Dictionary<int, BaseConfig>
     /// </summary>
     /// <typeparam name="T"></typeparam>
     /// <returns></returns>
@@ -60,5 +62,34 @@ public class GameConfigManager
             return baseConfig as T;
         else
             return null;
+    }
+    public void ChangeWordByLanguage(bool isCN) {
+        wordDictionary.Clear();
+        if (isCN)
+        {
+            Dictionary<int, BaseConfig> wordConfigDictionary = LoadConfigFromText<ChineseWordConfig>();
+            foreach (ChineseWordConfig config in wordConfigDictionary.Values)
+            {
+                wordDictionary.Add(config.id, config.CN);
+            }
+        }
+        else
+        {
+            Dictionary<int, BaseConfig> wordConfigDictionary = LoadConfigFromText<EnglishWordConfig>();
+            foreach (EnglishWordConfig config in wordConfigDictionary.Values)
+            {
+                wordDictionary.Add(config.id, config.EN);
+            }
+        }
+    }
+    public string GetWordByID(int wordId) {
+        string word;
+        if (wordDictionary.TryGetValue(wordId, out word))
+        {
+            return word;
+        }
+        else {
+            return string.Empty;
+        }
     }
 }

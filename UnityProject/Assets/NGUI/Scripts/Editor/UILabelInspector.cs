@@ -128,8 +128,14 @@ public class UILabelInspector : UIWidgetInspector
 		}
 
 		EditorGUI.BeginDisabledGroup(!isValid);
-		{
-			UIFont uiFont = (fnt != null) ? fnt.objectReferenceValue as UIFont : null;
+        {
+            //MelodySo Add Begin 2015.11.21
+            EditorGUILayout.BeginHorizontal();
+            EditorGUILayout.LabelField("WordID");
+            EditorGUILayout.PropertyField(serializedObject.FindProperty("mWordID"), new GUIContent(""));
+            EditorGUILayout.EndHorizontal();
+            //MelodySo Add End 2015.11.21
+            UIFont uiFont = (fnt != null) ? fnt.objectReferenceValue as UIFont : null;
 			Font dynFont = (ttf != null) ? ttf.objectReferenceValue as Font : null;
 
 			if (uiFont != null && uiFont.isDynamic)
