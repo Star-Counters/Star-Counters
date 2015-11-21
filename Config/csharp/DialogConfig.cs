@@ -17,7 +17,7 @@ namespace Config{
 	    public int npcid;
 		public DialogConfig(string str):base(str){
 			string[] temps=str.Split('\t');
-			if(temps.Length>3){
+			if(temps.Length>2){
                 id = System.Convert.ToInt32(temps[0]);
                 wordid = System.Convert.ToInt32(temps[1]);
                 npcid = System.Convert.ToInt32(temps[2]);

@@ -13,7 +13,7 @@ namespace Config{
 	    public string CN;
 		public ChineseWordConfig(string str):base(str){
 			string[] temps=str.Split('\t');
-			if(temps.Length>2){
+			if(temps.Length>1){
                 id = System.Convert.ToInt32(temps[0]);
                 CN = (temps[1]);
 			}

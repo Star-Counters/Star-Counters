@@ -3,3 +3,4 @@ int/id/id	string/name/名字	string/describe/描述
 2	伊利丹	背叛者
 3	盲僧	瞎子
 4	萨尔	部落的首领
+122	fucker	cao

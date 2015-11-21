@@ -17,7 +17,7 @@ namespace Config{
 	    public string describe;
 		public NPCConfig(string str):base(str){
 			string[] temps=str.Split('\t');
-			if(temps.Length>3){
+			if(temps.Length>2){
                 id = System.Convert.ToInt32(temps[0]);
                 name = (temps[1]);
                 describe = (temps[2]);
