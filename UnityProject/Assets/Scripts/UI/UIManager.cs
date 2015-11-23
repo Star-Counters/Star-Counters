@@ -129,6 +129,10 @@ public class UIManager{
         foreach (Transform child in panelParent) {
             UIPanel panel = child.GetComponent<UIPanel>();
             if (panel) {
+                UILabel[] labelList = panel.GetComponentsInChildren<UILabel>();
+                foreach (UILabel singleLable in labelList) {
+                    singleLable.Localize();
+                }
                 panel.Invalidate(true);
             }
         }
