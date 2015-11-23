@@ -31,7 +31,7 @@ public class GameDataManager
 	public GameDataManager(){
 		dataDictionary = new Dictionary<Type, DataBase> ();
 		xmlSaver =new XmlSaver();
-	}
+    }
 	public T Get<T>() where T:DataBase,new(){
 		DataBase data;
 		if (dataDictionary.TryGetValue (typeof(T), out data)) {
@@ -84,6 +84,13 @@ public class GameDataManager
     public bool IsChinese {
         get {
             return Get<OptionData>().language == SystemLanguage.ChineseSimplified;
+        }
+    }
+    public ArchiveData ArchiveData
+    {
+        get
+        {
+            return Get<ArchiveData>();
         }
     }
 }

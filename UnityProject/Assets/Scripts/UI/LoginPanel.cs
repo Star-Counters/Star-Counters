@@ -26,7 +26,7 @@ public class LoginPanel : BasePanel {
 	
 	void OnClickNewGame(){
 		UIManager.Instance.ShowOKCancel ("Start New Game?\nThe old save data would be erased.", () => {
-			ArchiveData data = new ArchiveData ("Fucker", 0);
+			ArchiveData data = new ArchiveData ();
 			GameDataManager.Instance.Save<ArchiveData> (data);
 			UIManager.Instance.ShowPanel<GamePanel> ();
 			Hide ();
@@ -35,7 +35,7 @@ public class LoginPanel : BasePanel {
 	void OnClickContinue(){
 		ArchiveData data = GameDataManager.Instance.Get<ArchiveData> ();
 		Debug.Log ("PlayerName:" + data.playerName + ",UDID:" + data.key);
-		UIManager.Instance.ShowPanel<GamePanel> ();
 		Hide ();
+		UIManager.Instance.ShowPanel<GamePanel> ();
 	}
 }

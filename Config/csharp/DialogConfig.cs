@@ -4,23 +4,33 @@ using System.Collections.Generic;
 namespace Config{
 	public sealed class DialogConfig:BaseConfig{
 	    /// <summary>
-	    /// id
+	    /// 剧情id
 	    /// </summary>
 	    public int id;
 	    /// <summary>
-	    /// 文字id
+	    /// 章节名字
 	    /// </summary>
-	    public int wordid;
+	    public string chapter;
 	    /// <summary>
-	    /// npcid
+	    /// 剧情类型
 	    /// </summary>
-	    public int npcid;
+	    public int type;
+	    /// <summary>
+	    /// 对话
+	    /// </summary>
+	    public string dialog;
+	    /// <summary>
+	    /// 选择转到
+	    /// </summary>
+	    public string[] choiceGoTo;
 		public DialogConfig(string str):base(str){
 			string[] temps=str.Split('\t');
-			if(temps.Length>2){
+			if(temps.Length>4){
                 id = System.Convert.ToInt32(temps[0]);
-                wordid = System.Convert.ToInt32(temps[1]);
-                npcid = System.Convert.ToInt32(temps[2]);
+                chapter = (temps[1]);
+                type = System.Convert.ToInt32(temps[2]);
+                dialog = (temps[3]);
+                choiceGoTo = ConvertStringToArray(temps[4]);
 			}
 		}
 	}

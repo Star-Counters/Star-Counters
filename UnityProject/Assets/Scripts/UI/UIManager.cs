@@ -65,32 +65,16 @@ public class UIManager{
 		basePanel.OnShow ();
 		return basePanel;
 	}
-	public void HidePanel<T>() where T:BasePanel{
+	public void HidePanel(Type type) {
 		BasePanel basePanel;
-		if (panelDictionary.TryGetValue (typeof(T),out basePanel)) {
+		if (panelDictionary.TryGetValue (type,out basePanel)) {
 			curPanelDepth -= DELTA_DEPTH;
 			basePanel.OnHide ();
-			panelDictionary.Remove(typeof(T));
+			panelDictionary.Remove(type);
 			GameObject.Destroy (basePanel.gameObject);
 		}
 		else {
-			Debug.LogWarning(string.Format("{0} has not been loaded",typeof(T).Name));
-		}
-	}	
-	public void HidePanel(BasePanel basePanel) {
-		if (panelDictionary.ContainsValue(basePanel)) {
-			curPanelDepth -= DELTA_DEPTH;
-			basePanel.OnHide ();
-			foreach(Type type in panelDictionary.Keys){
-				if(panelDictionary[type]==basePanel){
-					panelDictionary.Remove(type);
-					break;
-				}
-			}
-			GameObject.Destroy (basePanel.gameObject);
-		}
-		else {
-			Debug.LogWarning(string.Format("{0} has not been loaded",basePanel));
+			Debug.LogWarning(string.Format("{0} has not been loaded",type.Name));
 		}
 	}
 	public void ActivePanel<T>() where T:BasePanel{

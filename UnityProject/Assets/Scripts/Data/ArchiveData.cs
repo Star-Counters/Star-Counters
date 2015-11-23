@@ -6,7 +6,7 @@ public class ArchiveData : DataBase {
 	public int progress;
 	public ArchiveData(){
 		playerName = "";
-		progress = 0;
+		progress = 1;
 	}
 	public ArchiveData(string playerName,int progress){
 		this.playerName = playerName;
