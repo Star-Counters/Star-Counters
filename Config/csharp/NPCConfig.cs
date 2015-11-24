@@ -18,9 +18,9 @@ namespace Config{
 		public NPCConfig(string str):base(str){
 			string[] temps=str.Split('\t');
 			if(temps.Length>2){
-                id = System.Convert.ToInt32(temps[0]);
-                name = (temps[1]);
-                describe = (temps[2]);
+                id = string.IsNullOrEmpty(temps[0])?0:System.Convert.ToInt32(temps[0]);
+                name = string.IsNullOrEmpty(temps[1])?string.Empty:(temps[1]);
+                describe = string.IsNullOrEmpty(temps[2])?string.Empty:(temps[2]);
 			}
 		}
 	}

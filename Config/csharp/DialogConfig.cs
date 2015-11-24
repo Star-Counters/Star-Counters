@@ -42,15 +42,15 @@ namespace Config{
 		public DialogConfig(string str):base(str){
 			string[] temps=str.Split('\t');
 			if(temps.Length>8){
-                id = System.Convert.ToInt32(temps[0]);
-                chapter = (temps[1]);
-                type = System.Convert.ToInt32(temps[2]);
-                dialog = (temps[3]);
-                choiceGoTo = ConvertStringToArray(temps[4]);
-                variable = (temps[5]);
-                expression = (temps[6]);
-                switchGoTo = System.Convert.ToInt32(temps[7]);
-                comment = (temps[8]);
+                id = string.IsNullOrEmpty(temps[0])?0:System.Convert.ToInt32(temps[0]);
+                chapter = string.IsNullOrEmpty(temps[1])?string.Empty:(temps[1]);
+                type = string.IsNullOrEmpty(temps[2])?0:System.Convert.ToInt32(temps[2]);
+                dialog = string.IsNullOrEmpty(temps[3])?string.Empty:(temps[3]);
+                choiceGoTo = string.IsNullOrEmpty(temps[4])?null:ConvertStringToArray(temps[4]);
+                variable = string.IsNullOrEmpty(temps[5])?string.Empty:(temps[5]);
+                expression = string.IsNullOrEmpty(temps[6])?string.Empty:(temps[6]);
+                switchGoTo = string.IsNullOrEmpty(temps[7])?0:System.Convert.ToInt32(temps[7]);
+                comment = string.IsNullOrEmpty(temps[8])?string.Empty:(temps[8]);
 			}
 		}
 	}
