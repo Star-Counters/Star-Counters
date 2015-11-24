@@ -23,14 +23,34 @@ namespace Config{
 	    /// 选择转到
 	    /// </summary>
 	    public string[] choiceGoTo;
+	    /// <summary>
+	    /// 变量名
+	    /// </summary>
+	    public string variable;
+	    /// <summary>
+	    /// 表达式
+	    /// </summary>
+	    public string expression;
+	    /// <summary>
+	    /// 判断转到
+	    /// </summary>
+	    public int switchGoTo;
+	    /// <summary>
+	    /// 备注
+	    /// </summary>
+	    public string comment;
 		public DialogConfig(string str):base(str){
 			string[] temps=str.Split('\t');
-			if(temps.Length>4){
+			if(temps.Length>8){
                 id = System.Convert.ToInt32(temps[0]);
                 chapter = (temps[1]);
                 type = System.Convert.ToInt32(temps[2]);
                 dialog = (temps[3]);
                 choiceGoTo = ConvertStringToArray(temps[4]);
+                variable = (temps[5]);
+                expression = (temps[6]);
+                switchGoTo = System.Convert.ToInt32(temps[7]);
+                comment = (temps[8]);
 			}
 		}
 	}
