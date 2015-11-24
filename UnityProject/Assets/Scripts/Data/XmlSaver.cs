@@ -57,7 +57,7 @@ public class XmlSaver
 	{
 		XmlSerializer xs  = new XmlSerializer(ty);
 		MemoryStream memoryStream  = new MemoryStream(StringToUTF8ByteArray(pXmlizedString));
-		XmlTextWriter xmlTextWriter   = new XmlTextWriter(memoryStream, Encoding.UTF8);
+		//XmlTextWriter xmlTextWriter   = new XmlTextWriter(memoryStream, Encoding.UTF8);
 		return xs.Deserialize(memoryStream);
 	}
 

@@ -28,8 +28,8 @@ public class LoginPanel : BasePanel {
 		UIManager.Instance.ShowOKCancel ("Start New Game?\nThe old save data would be erased.", () => {
 			ArchiveData data = new ArchiveData ();
 			GameDataManager.Instance.Save<ArchiveData> (data);
-			UIManager.Instance.ShowPanel<GamePanel> ();
 			Hide ();
+			UIManager.Instance.ShowPanel<GamePanel> ();
 		}, null);
 	}
 	void OnClickContinue(){

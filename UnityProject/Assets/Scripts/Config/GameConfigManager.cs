@@ -12,16 +12,19 @@ public class GameConfigManager
     }
     private Dictionary<Type, Dictionary<int,BaseConfig>> configsDictionary;
     private Dictionary<int, string> wordDictionary;
+	private Dictionary<string, int> chapterDictionary;
     public GameConfigManager(){
         configsDictionary = new Dictionary<Type, Dictionary<int, BaseConfig>>();
         wordDictionary = new Dictionary<int, string>();
+		chapterDictionary = new Dictionary<string, int> ();
         LoadAllConfigs();
     }
     public void LoadAllConfigs() {
         configsDictionary.Add(typeof(NPCConfig), LoadConfigFromText<NPCConfig>());
-        configsDictionary.Add(typeof(DialogConfig), LoadConfigFromText<DialogConfig>());
+		configsDictionary.Add(typeof(DialogConfig), LoadConfigFromText<DialogConfig> ());
         //configsDictionary.Add(typeof(ChineseWordConfig), LoadConfigFromText<ChineseWordConfig>());
         //configsDictionary.Add(typeof(EnglishWordConfig), LoadConfigFromText<EnglishWordConfig>());
+		SetChapterDictionary ();
     }
     /// <summary>
     /// 加载.txt文件，生成类T的实例字典Dictionary<int, BaseConfig>
@@ -40,6 +43,8 @@ public class GameConfigManager
 		while (streamReader.Peek ()>0) {
 			string temp=streamReader.ReadLine();
 			if(i>0){
+				BaseConfig cc=new BaseConfig(temp);
+				//T t=new BaseConfig(temp) as T;
 				T t =Activator.CreateInstance(typeof(T),temp) as T;
                 configDictionary.Add(i, t);
             }
@@ -92,4 +97,24 @@ public class GameConfigManager
             return string.Empty;
         }
     }
+	private void SetChapterDictionary(){
+		Dictionary<int,BaseConfig> dialogConfigDictionary = GetConfigDictionary<DialogConfig> ();
+		DialogConfig dialogConfig;
+		foreach (KeyValuePair<int,BaseConfig> pair in dialogConfigDictionary) {
+			dialogConfig=pair.Value as DialogConfig;
+			if(dialogConfig.chapter!=""){
+				chapterDictionary.Add(dialogConfig.chapter,dialogConfig.id);
+			}
+		}
+	}
+	public int GetChapterIDByName(string name){
+		int id;
+		if (chapterDictionary.TryGetValue (name, out id)) {
+			return id;
+		}
+		else {
+			Debug.LogError(string.Format("ChapterName {0} doesn't exist!",name));
+			return 0;
+		}
+	}
 }
