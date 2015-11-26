@@ -14,8 +14,8 @@ http://wpa.qq.com/msgrd?v=3&uin=529419853&site=qq&menu=yes
 http://wpa.qq.com/msgrd?v=3&uin=407597429&site=qq&menu=yes
 
 
-Coding Standards:
-http://edu.cnzz.cn/201307/91472479.shtml
+Naming Guidelines:
+https://msdn.microsoft.com/en-us/library/xzf533w0(VS.71).aspx
 
 Plugins:
 
