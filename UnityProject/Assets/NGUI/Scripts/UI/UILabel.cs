@@ -1074,8 +1074,13 @@ public class UILabel : UIWidget {
 
     /// <summary>
     /// Carrion add for change language in 2015.11.24
+    /// Fix text is empty when wordID = 0 ,now it show original text.By Carrion 2015.11.28 
     /// </summary>
     public void Localize() {
+        if (mWordID == 0) {
+            return;
+        }
+
         text = GameConfigManager.Instance.GetWordByID(mWordID);
     }
 

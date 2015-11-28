@@ -8,7 +8,9 @@ UnityProject/Assets/NGUI/Examples.meta
 UnityProject/Assets/UnityVS
 UnityProject/Assets/UnityVS.meta
 UnityProject/obj
+UnityProject/Assets/Editor/EditorWindow.meta
 XcodeProject
+
 *.csproj
 *.unityproj
 *.sln
